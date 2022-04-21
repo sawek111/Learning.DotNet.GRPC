@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService1";
+
+package test;
+
+service TestService {
+  rpc UnaryCall (MessageRequest) returns (MessageReply);
+  rpc ServerSideStream (MessageRequest) returns (stream MessageReply);
+  rpc ClientSideStream (stream MessageRequest) returns (MessageReply);
+  rpc FullDuplex (stream MessageRequest) returns (stream MessageReply);
+}
+
+message MessageRequest {
+  string myMessage = 1;
+}
+
+message MessageReply {
+  string responseMessage = 1;
+}
+
+
